@@ -1,19 +1,22 @@
 import React from 'react'
-import { Container, LocationContainer, Location, Cart, Badge } from './style'
+import { Link } from 'react-router-dom'
+import { Container, LocationContainer, Location, Content } from './style'
 import logo from '../../assets/logo.svg'
 import pin from '../../assets/pin.svg'
-import cart from '../../assets/yellow-cart.svg'
+import { CartButton } from '../Cart'
 
 export function Header () {
   return (
-        <Container>
-                <img src={logo} alt="coffe delivery" />
-                <LocationContainer>
-                    <Location><img src={pin} alt="location" /> São José do Rio Preto / SP</Location>
-                    <Cart><img src={cart} alt="" />
-                        <Badge>3</Badge>
-                    </Cart>
-                </LocationContainer>
-        </Container>
+    <Container>
+      <Content>
+        <Link to={'/'}>
+        <img src={logo} alt="coffe delivery" />
+        </Link>
+        <LocationContainer>
+          <Location><img src={pin} alt="location" /> São José do Rio Preto / SP</Location>
+          <CartButton />
+        </LocationContainer>
+      </Content>
+    </Container>
   )
 }

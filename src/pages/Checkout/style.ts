@@ -7,6 +7,7 @@ interface InputProps {
 
 export const Container = styled.div`
     padding: 0 9rem;
+    margin-top: 176px;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 32px;
@@ -48,6 +49,10 @@ export const Input = styled.input<InputProps>`
     border:1px solid ${props => props.theme['white-400']};
     padding: 8px;
     border-radius: 6px;
+    &:focus {
+        outline: 1px solid ${props => props.theme['purple-200']};
+    }
+    
 `
 export const GroupInput = styled.div`
     display: flex;

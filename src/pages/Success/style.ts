@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+margin-top: 120px;
     padding: 0 9rem;
 h1 {
     color:  ${props => props.theme['yellow-500']};

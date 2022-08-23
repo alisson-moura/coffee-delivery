@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background: ${props => props.theme['white-200']};
     color: ${(props) => props.theme['brown-500']};
-    max-width: 1440px;
+    width: 1440px;
     margin: 0 auto;
 }
 

@@ -5,12 +5,20 @@ const flexCenter = `
     justify-content: center;
     align-items: center;
 `
-export const Container = styled.header`
-    height: 160px;
+export const Content = styled.div`
     max-width: 1440px;
-    margin: 0 auto;
     ${flexCenter}
     justify-content: space-between;
+    height: 120px;
+    margin: 0 auto;
+`
+export const Container = styled.header`
+    width: 100vw;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+    background: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
 `
 export const LocationContainer = styled.div`
     ${flexCenter}
@@ -23,25 +31,4 @@ export const Location = styled.span`
     color: ${props => props.theme['purple-500']};
     ${flexCenter}
     gap: 8px;
-`
-export const Cart = styled.div`
-    ${flexCenter}
-    position: relative;
-    padding: 10px;
-    border-radius: 6px;
-    background: ${props => props.theme['yellow-100']};
-`
-
-export const Badge = styled.div`
-    position: absolute;
-    right: -8px;
-    top: -8px;
-    ${flexCenter}
-    width: 20px;
-    height: 20px;
-    background: ${props => props.theme['yellow-500']};
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 700;
-    color: ${props => props.theme['white-100']};
 `

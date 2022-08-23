@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Banner = styled.div`
     display: flex;
+    margin-top: 120px;
     padding: 56px 9rem;
     gap: 56px;
     justify-content: space-around;
@@ -52,7 +53,7 @@ export const Products = styled.div`
     padding: 2rem 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem
+    gap: 2rem;
 `
 
 export const Product = styled.div`
@@ -89,6 +90,10 @@ export const Product = styled.div`
         text-align: center;
         margin-top: -16px;
     }
+`
+export const Tags = styled.div`
+    display: flex;
+    gap: 0.5rem;
 `
 export const PriceContainer = styled.div`
     margin-top: 1rem;
