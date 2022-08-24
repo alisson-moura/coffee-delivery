@@ -80,3 +80,29 @@ export function getAllData () {
 export function filterProduct (id: number): Data | undefined {
   return data.find(d => d.id === id)
 }
+
+type Item = {
+  product_id: number
+  amount: number
+}
+interface Request {
+  items: Item[]
+  cep: string
+  address: string
+  number: string
+  district: string
+  city: string
+  uf: string
+  payment: string
+  complement?: string
+}
+
+interface Response {
+  status: number
+}
+
+export async function sendRequest (requests: Request): Promise<Response> {
+  const timeout = new Promise((resolve, reject) => setTimeout(() => { resolve(null) }, 3000))
+  await timeout
+  return { status: 200 }
+}

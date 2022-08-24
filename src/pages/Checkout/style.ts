@@ -1,8 +1,9 @@
 import { HTMLProps } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 interface InputProps {
     col: string
+    error?: boolean
 }
 
 export const Container = styled.div`
@@ -32,7 +33,7 @@ export const Title = styled.div`
    }
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
  background: ${props => props.theme['white-300']};
     padding: 40px;
     border-radius: 6px;
@@ -52,6 +53,7 @@ export const Input = styled.input<InputProps>`
     &:focus {
         outline: 1px solid ${props => props.theme['purple-200']};
     }
+    outline: ${props => props.error ? '1px solid' + props.theme['red-200'] + ';' : 'none'} ;
     
 `
 export const GroupInput = styled.div`
@@ -59,7 +61,11 @@ export const GroupInput = styled.div`
     gap: 8px;
     margin-bottom: 16px;
 `
-export const PaymentContainer = styled.div`
+
+interface PaymentProps {
+    error?: boolean
+}
+export const PaymentContainer = styled.div<PaymentProps>`
     margin-top: 12px;
     padding: 40px;
     background: ${props => props.theme['white-300']};
@@ -76,6 +82,7 @@ export const PaymentContainer = styled.div`
         font-size: 0.9rem;
         margin-top: -16px;
     }
+    outline: ${props => props.error ? '1px solid' + props.theme['red-200'] + ';' : 'none'} ;
 `
 
 interface BtnPaymentProps extends HTMLProps<HTMLLabelElement> {
@@ -200,10 +207,51 @@ button {
         background-color: ${props => props.theme['yellow-200']};
         width: 100%;
         padding: 10px;
+        min-height: 45px;
         outline: none;
         border: none;
         border-radius: 6px;
         line-height: 1.6;
         margin-top: 10px;
+        position: relative;
     }
+`
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+export const Load = styled.span`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+    &:after {
+        content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    width: 25px;
+    height: 25px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    animation: loading1 1s ease infinite;
+    z-index: 10
+    }
+    &:before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 4px dashed #fff;
+    width: 25px;
+    height: 25px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    z-index: 5
+}
+animation: ${rotate} 1s linear infinite;
 `
