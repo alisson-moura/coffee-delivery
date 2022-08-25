@@ -1,5 +1,5 @@
 
-<h1 align="center"> <img alt="An coffee cup vector icon" src="https://raw.githubusercontent.com/alisson-moura/coffee-delivery/blob/main/src/assets/logo.svg" height="30px" />  Coffee Delivery</h1>
+<h1 align="center"> <img alt="An coffee cup vector icon" src="https://raw.githubusercontent.com/alisson-moura/coffee-delivery/main/src/assets/logo.svg" height="30px" />  Coffee Delivery</h1>
 
 Aplicação para gerenciar um carrinho de compras de uma cafeteria online fictícia.
 
