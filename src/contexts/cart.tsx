@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 
-type CartProduct = {
+export type CartProduct = {
   id: number
   amount: number
 }
@@ -30,8 +30,15 @@ export function CartProvider ({ children }: any) {
 
   const updateProducts = (data: CartProduct): void => {
     data.amount > 0
-      ? setProducts((prevState) =>
-        ([...prevState.filter(product => product.id !== data.id), data]))
+      ? setProducts((prevState) => {
+        const index = prevState.findIndex(p => p.id === data.id)
+        if (index !== -1) {
+          prevState[index] = data
+          return [...prevState]
+        }
+        return [...prevState, data]
+      })
+    // ([...prevState.filter(product => product.id !== data.id), data]))
       : setProducts((prevState) => prevState.filter(p => p.id !== data.id))
   }
 
