@@ -20,12 +20,6 @@ export function Card ({ product }: CardProps) {
         : setAmount(0)
   }
 
-  function addCart () {
-    updateProducts({
-      id: product.id,
-      amount
-    })
-  }
   return (
         <Product>
             <img src={product.img} alt="" />
@@ -42,7 +36,10 @@ export function Card ({ product }: CardProps) {
                         <span>{amount}</span>
                         <button onClick={() => updateAmountProduct('sum')}>+</button>
                     </div>
-                    <button onClick={() => addCart()}><img src={purpleCart} alt="" /></button>
+                    <button onClick={() => updateProducts({
+                      id: product.id,
+                      amount
+                    })}><img src={purpleCart} alt="" /></button>
                 </Price>
             </PriceContainer>
         </Product>
