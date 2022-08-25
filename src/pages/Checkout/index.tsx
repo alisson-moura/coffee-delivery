@@ -1,23 +1,10 @@
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import pin from '../../assets/yellow-pin.svg'
-import creditCard from '../../assets/credit-card.svg'
-import debitCard from '../../assets/debit-card.svg'
-import money from '../../assets/money.svg'
-import dolar from '../../assets/dolar.svg'
-import trash from '../../assets/trash.svg'
+import { creditCard, debitCard, money, dolar, trash, yellowPin } from '../../assets'
 import { Title, BtnPayment, PaymentContainer, Load, PaymentMethod, Container, FormContainer, Amount, Form, Input, GroupInput, CoffeeCard, Item, AmountContainer, Total, TrashButton } from './style'
 import { CartContext } from '../../contexts/cart'
 import { filterProduct, sendRequest } from '../../provider/fake-api-data'
 import { formatCEP, onlyNumbers, toUpperCase } from '../../utils/masks'
-
-/**
- * [ ] Formatar os campos com mascaras
- * [ ] Bloquear submit enquanto todos os campos não estiverem preenchidos
- * [ ] Habilitar o submit e verificar campos
- * [ ] Em caso de erro no submit: marcar o input com a border vermelha
- * [ ] Em caso de sucesso: fazer animação de load no botão de submit e exibir modal com o pedido e botão de proximo
- */
 
 type SelectedProducts = {
   title?: string
@@ -163,7 +150,7 @@ export function Checkout () {
       <FormContainer>
         <h2>Complete seu pedido</h2>
         <Form>
-          <Title><img src={pin} alt="" /> <span>Endereço de Entrega</span></Title>
+          <Title><img src={yellowPin} alt="" /> <span>Endereço de Entrega</span></Title>
           <p>Informe o endereço onde deseja receber seu pedido</p>
           <GroupInput>
             <Input
