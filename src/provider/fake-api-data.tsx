@@ -1,3 +1,12 @@
+import cafeLeite from './coffees/cafe-leite.svg'
+import capuccino from './coffees/capuccino.svg'
+import americano from './coffees/expresso-americano.svg'
+import cremoso from './coffees/expresso-cremoso.svg'
+import gelado from './coffees/expresso-gelado.svg'
+import tradicional from './coffees/expresso-tradicional.svg'
+import latte from './coffees/latte.svg'
+import macchiato from './coffees/macchiato.svg'
+
 export type Data = {
   title: string
   description: string
@@ -13,7 +22,7 @@ const data: Data[] = [
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     types: ['tradicional'],
-    img: 'src/assets/coffees/expresso-tradicional.svg',
+    img: tradicional,
     price: 9.90
   },
   {
@@ -21,7 +30,7 @@ const data: Data[] = [
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     types: ['tradicional'],
-    img: 'src/assets/coffees/expresso-americano.svg',
+    img: americano,
     price: 5.90
   },
   {
@@ -29,7 +38,7 @@ const data: Data[] = [
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     types: ['tradicional'],
-    img: 'src/assets/coffees/expresso-cremoso.svg',
+    img: cremoso,
     price: 10.50
   },
   {
@@ -37,7 +46,7 @@ const data: Data[] = [
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     types: ['tradicional', 'gelado'],
-    img: 'src/assets/coffees/expresso-gelado.svg',
+    img: gelado,
     price: 9.90
   },
   {
@@ -45,7 +54,7 @@ const data: Data[] = [
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     types: ['tradicional', 'com leite'],
-    img: 'src/assets/coffees/cafe-leite.svg',
+    img: cafeLeite,
     price: 10.00
   },
   {
@@ -53,7 +62,7 @@ const data: Data[] = [
     title: 'Latte',
     description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
     types: ['tradicional', 'com leite'],
-    img: 'src/assets/coffees/latte.svg',
+    img: latte,
     price: 12.50
   },
   {
@@ -61,7 +70,7 @@ const data: Data[] = [
     title: 'Capuccino',
     description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
     types: ['tradicional', 'com leite'],
-    img: 'src/assets/coffees/capuccino.svg',
+    img: capuccino,
     price: 15.00
   },
   {
@@ -69,7 +78,7 @@ const data: Data[] = [
     title: 'Macchiato',
     description: 'Café expresso misturado com um pouco de leite quente e espuma',
     types: ['tradicional', 'com leite'],
-    img: 'src/assets/coffees/macchiato.svg',
+    img: macchiato,
     price: 15.00
   }
 ]
