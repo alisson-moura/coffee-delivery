@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import { coffee } from '../../assets'
 
 export const Banner = styled.div`
     display: flex;
@@ -55,92 +56,43 @@ export const Products = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 `
-
-export const Product = styled.div`
-    margin-top: 10px;
-    background: ${props => props.theme['white-300']};
-    width: 256px;
-    height: 310px;
-    border-radius: 6px 36px 6px 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    img {
-        margin-top: -60px;
+const coffeeAnimation = keyframes`
+    0%{
+        background-position: 0px 140px;
     }
-    span {
-        color: ${props => props.theme['yellow-500']};
-        background: ${props => props.theme['yellow-100']};
-        padding: 2px 8px;
-        font-size: 10px;
-        font-weight: 700;
-        border-radius: 26px;
+    20%
+    {
+        background-position: -450px 100px;
     }
-    h3 {
-        font-size: 20px;
-        line-height: 1.3;
-    } 
-    p {
-        color: ${props => props.theme['brown-100']};
-        font-size: 14px;
-        line-height: 1.3;
-        padding: 0 20px;
-        text-align: center;
-        margin-top: -16px;
+    40%{
+        background-position: -900px 50px;
+    }
+    80%{
+        background-position: -1350px -40px;
+    }
+    100%{
+        background-position: 0px 140px;;
     }
 `
-export const Tags = styled.div`
-    display: flex;
-    gap: 0.5rem;
-`
-export const PriceContainer = styled.div`
-    margin-top: 1rem;
-    display: flex;
-    width: 100%;
-    padding: 0 20px;
-    justify-content: space-between;
-    align-items: center;
-    span {
-        color: ${props => props.theme['brown-100']};
-        font-size: 14px;
-        font-weight: 400;
-        background: none;
-        padding: none;
-        b {
-            font-size: 1.5rem;
-        }
-    }
-`
-export const Price = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    button {
-        background: none;
-        border: none;
-        color: ${props => props.theme['purple-500']};
-        font-size: 1.5rem;
-        img {
-            margin: 0;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
+export const LoadAnimation = styled.div`
+    height: 140px;
+    width: 180px;
+    margin: 6rem auto;
+    border: 6px solid #e6b54a;
+    border-radius: 0px 0px 70px 70px;
+    background: url(${coffee});
+    box-shadow: 0px 0px 0px 6px white;
+    background-repeat: repeat-x;
+    background-position: 0px 140px;
+    animation: ${coffeeAnimation} 5s infinite;
     div {
-        background: ${props => props.theme['white-400']};
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px 8px;
-        border-radius: 8px;
-        span {
-            font-size: 1.2rem;
-            padding: 0 10px;
-        }
+    height: 70px;
+    width: 40px;
+    background-color: transparent;
+    border: 6px solid #e6b54a;
+    position: relative;
+    left: 170px;
+    top: 2px;
+    border-radius: 0px 25px 80px 0px;
     }
 `

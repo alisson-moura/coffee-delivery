@@ -17,6 +17,7 @@ import timeSVG from './timer.svg'
 import trashSVG from './trash.svg'
 import yellowCartSVG from './yellow-cart.svg'
 import yellowPinSVG from './yellow-pin.svg'
+import coffeePNG from './coffee.png'
 
 export const banner = bannerSVG
 export const box = boxSVG
@@ -37,3 +38,4 @@ export const timer = timeSVG
 export const trash = trashSVG
 export const yellowCart = yellowCartSVG
 export const yellowPin = yellowPinSVG
+export const coffee = coffeePNG
