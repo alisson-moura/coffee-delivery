@@ -74,8 +74,10 @@ const data: Data[] = [
   }
 ]
 
-export function getAllData () {
-  return data
+export async function getAllData () {
+  const timeout = new Promise((resolve, reject) => setTimeout(() => { resolve(null) }, 3000))
+  await timeout
+  return { status: 200, data }
 }
 export function filterProduct (id: number): Data | undefined {
   return data.find(d => d.id === id)
