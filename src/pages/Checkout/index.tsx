@@ -1,18 +1,13 @@
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { creditCard, debitCard, money, dolar, trash, yellowPin } from '../../assets'
-import { Title, BtnPayment, PaymentContainer, Load, PaymentMethod, Container, FormContainer, Amount, Form, Input, GroupInput, CoffeeCard, Item, AmountContainer, Total, TrashButton } from './style'
+import { creditCard, debitCard, money, dolar, yellowPin } from '../../assets'
+import { Title, BtnPayment, PaymentContainer, Load, PaymentMethod, Container, FormContainer, Form, Input, GroupInput, CoffeeCard, Total } from './style'
 import { CartContext } from '../../contexts/cart'
 import { filterProduct, sendRequest } from '../../provider/fake-api-data'
 import { formatCEP, onlyNumbers, toUpperCase } from '../../utils/masks'
+import { Item } from './Item'
+import { ProductsType } from '../Home'
 
-type SelectedProducts = {
-  title?: string
-  img?: string
-  price?: number
-  id?: number
-  amount?: number
-}
 type Inputs = {
   cep: string
   address: string
@@ -36,22 +31,19 @@ export function Checkout () {
   })
   const [errors, setErrors] = useState<string[]>([])
   const [load, setLoad] = useState(false)
-  const [selectedProducts, setSelectedProducts] = useState<SelectedProducts[]>([])
-  const { products, updateProducts, closeRequest } = useContext(CartContext)
+  const [selectedProducts, setSelectedProducts] = useState<ProductsType[]>([])
   const [total, setTotal] = useState<number>(0)
+  const { products, closeRequest } = useContext(CartContext)
 
   useEffect(() => {
-    const data = products.map(p => {
-      const product = filterProduct(p.id)
-      return {
-        title: product?.title,
-        img: product?.img,
-        price: product?.price,
-        id: product?.id
-      }
+    const items: ProductsType[] = []
+    products.forEach(element => {
+      const item = filterProduct(element.id)
+      if (item) items.push(item)
     })
-    setSelectedProducts((prevState) => [...data])
-  }, [])
+
+    setSelectedProducts(items)
+  }, [products])
 
   useEffect(() => {
     const sum = products.reduce((acc, item) => {
@@ -65,37 +57,6 @@ export function Checkout () {
     setTotal(sum)
     if (products.length === 0) navigate('/')
   }, [products, selectedProducts])
-
-  function removeProducts (id: number) {
-    console.log(id)
-    setSelectedProducts(prevState => {
-      const data = prevState.filter(p => p.id !== id)
-      return [...data]
-    })
-    const product = products.find(p => p.id === id)
-    if (product) {
-      updateProducts({
-        id: product.id,
-        amount: 0
-      })
-    }
-  }
-
-  function updateAmountProduct (id: number, type: string): void {
-    const product = products.find(p => p.id === id)
-    if (product) {
-      type === 'sum'
-        ? product.amount += 1
-        : product.amount > 0
-          ? product.amount -= 1
-          : product.amount = 0
-      if (product.amount === 0) { removeProducts(product.id) }
-      updateProducts({
-        id: product.id,
-        amount: product.amount
-      })
-    }
-  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setInputs(prevState => {
@@ -231,26 +192,7 @@ export function Checkout () {
         <CoffeeCard>
           <h2>Cafés selecionados</h2>
           <Form onSubmit={handleSubmit}>
-            {selectedProducts.length > 0 && selectedProducts.map(product => (
-              product && (
-                <Item key={product.id}>
-                  <img src={product.img} alt={product.title} />
-                  <AmountContainer>
-                    <span>{product.title}</span>
-                    <div>
-                      <Amount>
-                        <button type='button' onClick={() => updateAmountProduct(product.id!, 'sub')}>-</button>
-                        <span>{products.find(p => p.id === product.id)?.amount}</span>
-                        <button type='button' onClick={() => updateAmountProduct(product.id!, 'sum')}>+</button>
-                      </Amount>
-                      <TrashButton type='button' onClick={() => removeProducts(product.id!)}><img src={trash} alt="" />Remover</TrashButton>
-                    </div>
-                  </AmountContainer>
-                  <span><b>R$ {product.price?.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</b></span>
-                </Item>
-              )
-            )
-            )}
+            {selectedProducts.map(product => (<Item product={product} key={product.id} />))}
             <Total>
               <div>
                 <span>Total de itens</span>

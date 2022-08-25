@@ -5,10 +5,7 @@ import currency from '../../assets/currency.svg'
 import timer from '../../assets/timer.svg'
 import pin from '../../assets/pinRound.svg'
 import { CartContext } from '../../contexts/cart'
-/**
- * [ ] Exibir dados do pedido
- * [x] Limpar estado do carrinho
- */
+
 export function Success () {
   const { location } = useContext(CartContext)
   const displayPaymentMethod = (payment?: string) => {
